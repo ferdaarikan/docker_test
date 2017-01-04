@@ -1,4 +1,4 @@
-FROM ferdaarikan/ubuntu_blank
+FROM ferdaarikan/ubuntu_blank:latest
 
 MAINTAINER testuser
 
