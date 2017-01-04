@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ferdaarikan/ubuntu_blank
 
 MAINTAINER testuser
 
@@ -10,13 +10,13 @@ MAINTAINER testuser
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update
-RUN apt-get -qq update
-RUN apt-get install -y nodejs npm
+#RUN apt-get update
+#RUN apt-get -qq update
+#RUN apt-get install -y nodejs npm
 # TODO could uninstall some build dependencies
 
 # debian installs `node` as `nodejs`
-RUN update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
+#RUN update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
 
 # Copy app to /src
 COPY . /src
