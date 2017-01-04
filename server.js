@@ -69,6 +69,6 @@ response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 
     response.end(html, 'utf-8');
 
-}).listen(1337, 'localhost');
+}).listen(1337, '0.0.0.0');
 
 console.log('Server running!');
