@@ -24,6 +24,6 @@ COPY . /src
 # Install app and dependencies into /src
 RUN cd /src; npm install
 
-EXPOSE 8080
+EXPOSE 1337
 
 CMD cd /src && node ./server.js
