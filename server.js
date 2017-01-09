@@ -38,7 +38,7 @@ response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 		features = isFeatureEnabled(version);
 	}
 	
-    var html = '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="3">' + components + '<title>Feature Toggles</title></head><body>';
+    var html = '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="1500">' + components + '<title>Feature Toggles</title></head><body>';
     html += '<div class="container-fluid"><h1>Welcome to toggle app ' + version +'.0</h1><div class="form-group col-md-4">';
 	    
 	console.log(new Date().getTime() + ' ' + version + ': ' + JSON.stringify(features));
@@ -69,6 +69,6 @@ response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 
     response.end(html, 'utf-8');
 
-}).listen(1337, 'localhost');
+}).listen(1337, '0.0.0.0');
 
 console.log('Server running!');
