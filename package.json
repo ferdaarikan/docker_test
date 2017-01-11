@@ -9,5 +9,8 @@
   },
   "repository": "",
   "author": "",
-  "license": "BSD"
+  "license": "BSD",
+  "dependencies": {
+    "ldclient-node": "^3.0.6"
+  }
 }

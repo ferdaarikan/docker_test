@@ -11,7 +11,7 @@ verbose : log,
 debug : log,
 silly : log
 },
-stream : false
+stream : true
 };
 
 var client = LaunchDarkly.init("sdk-1565df04-39b9-4e01-a3c8-45a8f8460d24",config);
@@ -38,10 +38,12 @@ var user = {
 function ldFeature(togglename){
 
 console.log(new Date().getTime() + " Waiting for LD client...");
-//client.on('ready', function() {
+client.once('ready', function() {
+
 console.log("LD client is ready.");
 
   client.variation("save-button", user, false, function(err, showFeature) {
+   console.log(err);
     if (showFeature) {
       // application code to show the feature
       console.log("Showing your feature to " + user.key );
@@ -50,12 +52,14 @@ console.log("LD client is ready.");
       console.log("Not showing your feature to " + user.key);
     }
 
-    client.flush(function() {
-     client.close();
-    });
+   // client.flush(function() {
+   //  client.close();
+   // });
   });  
   
-//});
+});
+
+//client.emit('ready');
 
 }
 
@@ -92,6 +96,7 @@ response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 	//{
 	//	features = isFeatureEnabled(version);
 	//}
+
 
 	ldFeature('name');	
 	
@@ -130,6 +135,6 @@ response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 
 //console.log("EOF");
 
-}).listen(1337, 'localhost');
+}).listen(1337,'0.0.0.0');
 
 console.log('Server running!');
