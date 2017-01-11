@@ -54,9 +54,9 @@ function isFeatureEnabled(version){
   	throw 'Version not supported';
 }
 
-function httpServer(request, response){
+function httpServer(request, response) {
 //console.log(new Date().getTime() + " Waiting for LD client...");
-//client.once('ready', function() {
+//client.once('ready', function()
 //console.log(new Date().getTime() + " LD client ready..");
 
 response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
@@ -76,7 +76,7 @@ response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
       // the code to run if the feature is off
       console.log("Not showing your feature to " + user.key);
     }
-
+};
 
     var html = '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="1500">' + components + '<title>Feature Toggles</title></head><body>';
     html += '<div class="container-fluid"><h1>Welcome to toggle app ' + version +'.0</h1><div class="form-group col-md-4">';
@@ -90,10 +90,9 @@ response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 
 	html += '<button class="btn btn-primary">Edit</button>';
 
-	if(features.create == true)
-    {
+	if(features.create == true) {
 		html += '<button class="btn btn-success">Create</button>';
-	}
+	  }
 
     if(features.save == true){
 	    html += '<button class="btn btn-warning">Save</button>';
@@ -103,31 +102,21 @@ response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 	    html += '<button class="btn btn-danger">Delete</button>';
     }
 
-	html += '</div>'
+	html += '</div>';
+  html += '</div></div></body></html>';
 
-    html += '</div></div></body></html>';
-
-    response.end(html, 'utf-8');
-
-//}); //end of client.once
-
-//console.log("EOF");
-
+  response.end(html, 'utf-8');
 }
 
 console.log(new Date().getTime() + " Waiting for LD client...");
 client.once('ready', function() {
 console.log("LD client is ready.");
-
 http.createServer(httpServer).listen(1337, 'localhost');
 
-    client.flush(function() {
-     client.close();
-    });
+      client.flush(function() {
+       client.close();
+      });
   });
-
-});
-
 
 
 console.log('Server running!');
