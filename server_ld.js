@@ -76,7 +76,7 @@ response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
       // the code to run if the feature is off
       console.log("Not showing your feature to " + user.key);
     }
-};
+});
 
     var html = '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="1500">' + components + '<title>Feature Toggles</title></head><body>';
     html += '<div class="container-fluid"><h1>Welcome to toggle app ' + version +'.0</h1><div class="form-group col-md-4">';
