@@ -36,19 +36,21 @@ function bufferFile(relPath) {
 
 function isEnabled(togglename){
   console.log("Checking feature: " + togglename);
+  var result = false;
   client.variation(togglename, user, false, function(err, showFeature) {
     if (showFeature) {
       // application code to show the feature
       console.log("Feature: " + togglename + " is enabled for " + user.key );
-      return true;
+      result = true;
     } else {
       // the code to run if the feature is off
       console.log("Feature: " + togglename + " is disabled for " + user.key);
-      return false;
+      result = false;
     }
 });
 
 console.log("Feature checked.");
+return result;
 
 }
 
