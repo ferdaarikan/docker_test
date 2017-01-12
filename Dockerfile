@@ -26,4 +26,4 @@ RUN cd /src; npm install
 
 EXPOSE 1337
 
-CMD cd /src && node ./server.js
+CMD cd /src && node ./server_ld.js
