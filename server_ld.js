@@ -40,7 +40,7 @@ function isEnabled(togglename){
       return true;
     } else {
       // the code to run if the feature is off
-      console.log("Feature: " + togglename + ' is disabled for ' user.key);
+      console.log("Feature: " + togglename + ' is disabled for ' + user.key);
       return false;
     }
 });}
