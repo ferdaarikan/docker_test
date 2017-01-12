@@ -88,15 +88,15 @@ response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 
 	html += '<button class="btn btn-primary">Edit</button>';
 
-	if(isEnabled("create-button") == true) {
+	 if(isEnabled("create-button")) {
 		html += '<button class="btn btn-success">Create</button>';
 	  }
 
-    if(isEnabled("save-button") == true){
+    if(isEnabled("save-button")){
 	    html += '<button class="btn btn-warning">Save</button>';
     }
 
-    if(isEnabled("delete-button") == true){
+    if(isEnabled("delete-button")){
 	    html += '<button class="btn btn-danger">Delete</button>';
     }
 
