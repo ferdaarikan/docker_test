@@ -88,9 +88,9 @@ response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 //     }
 // });
 
-isEnabled("save-button")
-isEnabled("create-button")
-isEnabled("delete-button")
+isEnabled("save-button");
+isEnabled("create-button");
+isEnabled("delete-button");
 
     var html = '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="1500">' + components + '<title>Feature Toggles</title></head><body>';
     html += '<div class="container-fluid"><h1>Welcome to toggle app ' + version +'.0</h1><div class="form-group col-md-4">';
