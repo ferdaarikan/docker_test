@@ -35,17 +35,22 @@ function bufferFile(relPath) {
 }
 
 function isEnabled(togglename){
+  console.log("Checking feature: " + togglename);
   client.variation(togglename, user, false, function(err, showFeature) {
     if (showFeature) {
       // application code to show the feature
-      console.log("Feature: " + togglename + ' is enabled for ' + user.key );
+      console.log("Feature: " + togglename + " is enabled for " + user.key );
       return true;
     } else {
       // the code to run if the feature is off
-      console.log("Feature: " + togglename + ' is disabled for ' + user.key);
+      console.log("Feature: " + togglename + " is disabled for " + user.key);
       return false;
     }
-});}
+});
+
+console.log("Feature checked.");
+
+}
 
 function isFeatureEnabled(version){
   	if(version == 'v0'){
