@@ -111,11 +111,12 @@ response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 console.log(new Date().getTime() + " Waiting for LD client...");
 client.once('ready', function() {
 console.log("LD client is ready.");
-http.createServer(httpServer).listen(1337, 'localhost');
 
-      client.flush(function() {
-       client.close();
-      });
+http.createServer(httpServer).listen(1337, '0.0.0.0');
+
+  //    client.flush(function() {
+ //      client.close();
+ //     });
   });
 
 
