@@ -54,50 +54,25 @@ return result;
 
 }
 
-function isFeatureEnabled(version){
-  	if(version == 'v0'){
-  		return { create : false, save : false, delete : false };
-  	}
-
-  	if(version == 'v1'){
-  		return { create : true, save : false, delete : false };
-  	}
-  	if(version == 'v2'){
-  		return { create : true, save : true, delete : false };
-  	}
-
-  	if(version == 'v3'){
-  		return { create : true, save : true, delete : true };
-  	}
-
-  	throw 'Version not supported';
-}
 
 function httpServer(request, response) {
-//console.log(new Date().getTime() + " Waiting for LD client...");
-//client.once('ready', function()
-//console.log(new Date().getTime() + " LD client ready..");
-
 response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 
 	var version = bufferFile("/version.txt");
 	var features = JSON.parse(bufferFile("/features.json"));
-
   var html = '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="1500">' + components + '<title>Feature Toggles</title></head><body>';
   html += '<div class="container-fluid"><h1>Welcome to toggle app ' + version +'.0</h1><div class="form-group col-md-4">';
-
 	//console.log(new Date().getTime() + ' ' + version + ': ' + JSON.stringify(features));
 
 	html += '<div class="alert alert-' + features.mode + '" role="alert">Messages will appear here !</div>';
-
 	html += '<div class="list-group"><button type="button" class="list-group-item">Cras justo odio</button><button type="button" class="list-group-item">Dapibus ac facilisis in</button><button type="button" class="list-group-item">Morbi leo risus</button><button type="button" class="list-group-item">Porta ac consectetur ac</button><button type="button" class="list-group-item">Vestibulum at eros</button></div>';
 	html += '<div class="btn-group">'
 
 	html += '<button class="btn btn-primary">Edit</button>';
 
-	 if(isEnabled("create-button")) {
+	if(isEnabled("create-button")) {
 		html += '<button class="btn btn-success">Create</button>';
-	  }
+  }
 
     if(isEnabled("save-button")){
 	    html += '<button class="btn btn-warning">Save</button>';
@@ -123,6 +98,5 @@ http.createServer(httpServer).listen(1337, '0.0.0.0');
  //      client.close();
  //     });
   });
-
 
 console.log('Server running!');
