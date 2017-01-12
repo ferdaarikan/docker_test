@@ -75,27 +75,9 @@ response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 
 	var version = bufferFile("/version.txt");
 	var features = JSON.parse(bufferFile("/features.json"));
-	//if(features.is_version_toggle == true)
-	//{
-	//	features = isFeatureEnabled(version);
-	//}
-//
-//   client.variation("save-button", user, false, function(err, showFeature) {
-//     if (showFeature) {
-//       // application code to show the feature
-//       console.log("Showing your feature to " + user.key );
-//     } else {
-//       // the code to run if the feature is off
-//       console.log("Not showing your feature to " + user.key);
-//     }
-// });
 
-isEnabled("save-button");
-isEnabled("create-button");
-isEnabled("delete-button");
-
-    var html = '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="1500">' + components + '<title>Feature Toggles</title></head><body>';
-    html += '<div class="container-fluid"><h1>Welcome to toggle app ' + version +'.0</h1><div class="form-group col-md-4">';
+  var html = '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="1500">' + components + '<title>Feature Toggles</title></head><body>';
+  html += '<div class="container-fluid"><h1>Welcome to toggle app ' + version +'.0</h1><div class="form-group col-md-4">';
 
 	//console.log(new Date().getTime() + ' ' + version + ': ' + JSON.stringify(features));
 
@@ -106,15 +88,15 @@ isEnabled("delete-button");
 
 	html += '<button class="btn btn-primary">Edit</button>';
 
-	if(features.create == true) {
+	if(isEnabled("create-button") == true) {
 		html += '<button class="btn btn-success">Create</button>';
 	  }
 
-    if(features.save == true){
+    if(isEnabled("save-button") == true){
 	    html += '<button class="btn btn-warning">Save</button>';
     }
 
-    if(features.delete == true){
+    if(isEnabled("delete-button") == true){
 	    html += '<button class="btn btn-danger">Delete</button>';
     }
 
