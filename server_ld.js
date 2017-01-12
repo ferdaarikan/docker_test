@@ -6,7 +6,7 @@ var LaunchDarkly = require('ldclient-node');
 
 var log = function(n,e) { console.log(n + '->' + e); }
 
-var config = {logger : {
+var config = { logger : {
 error: log,
 info : log,
 warn : log,
@@ -16,6 +16,8 @@ silly : log
 },
 stream : false
 };
+
+config.logger = null;
 
 var client = LaunchDarkly.init("sdk-1565df04-39b9-4e01-a3c8-45a8f8460d24",config);
 
